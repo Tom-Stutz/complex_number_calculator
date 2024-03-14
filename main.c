@@ -1,6 +1,11 @@
-/*
-Header
-*/
+/*******************************************************************************************
+NAME       : Tom Stutz, Allyson Telck, Vince Scalici
+CLASS      :  EGR 227 
+INSTRUCTOR : Dr. Brian Krug
+ASSIGNMENT : Final Project
+FILE NAME: main.c
+NOTES      : Wack a mole. project must include the following (11) files: main.c, final.c, LCD.c, KEYPAD.c, PWM.c, MOLE.c, final.h, LCD.h, KEYPAD.h, PWM.h, MOLE.h
+*******************************************************************************************/
 
 #include "complex.h"
 

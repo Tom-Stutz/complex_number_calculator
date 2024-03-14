@@ -27,12 +27,15 @@ typedef struct {
 typedef struct {
     double Z;
     double theta_degress;
+    double theta_radians;
 } polar_num;
 
 //////////////////////////////////////////////////////////////////////////////////////
 //prototype functions
 //////////////////////////////////////////////////////////////////////////////////////
 complex_num complex_add(complex_num,complex_num);
+
+complex_num complex_subtract(complex_num,complex_num);
 
 polar_num complex_to_polar(complex_num);
 

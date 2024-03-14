@@ -1,12 +1,17 @@
 /*
 Header
+123456
+
 */
 
 #include "complex.h"
 
-/*
-FUNCTION HEADER
-*/
+/*******
+FUNCTION: complex_add
+INPUTS: input1, input2
+OUTPUTS: output
+DESCRIPTION: takes 2 inputs of complex_num type and adds them together. Returns a complex_num type
+*******/
 complex_num complex_add (complex_num input1,complex_num input2) {
 
 //variables
@@ -19,9 +24,30 @@ return output;
 
 }
 
-/*
-FUNCTION HEADER
-*/
+/*******
+FUNCTION: complex_subtrack
+INPUTS: input1, input2
+OUTPUTS: output
+DESCRIPTION: takes 2 inputs of complex_num type and subtracts them together (input 1 - input 2). Returns a complex_num type
+*******/
+complex_num complex_subtract(complex_num input1,complex_num input2) {
+
+//variables
+complex_num output;
+//addition
+output.r = input1.r - input2.r;
+output.im = input1.im - input2.im;
+//return
+return output;
+
+}
+
+/*******
+FUNCTION: complex_to_polar
+INPUTS: input
+OUTPUTS: output
+DESCRIPTION: Takes an input of complex_num type and returns an output of polar_num type.
+*******/
 polar_num complex_to_polar(complex_num input) {
 
 //variables
@@ -31,15 +57,19 @@ double theta_radians = 0;
 //perform operations
 output.Z = sqrt(pow(input.r, 2) + pow(input.im, 2));
 theta_radians = atan(input.im / input.r);
+output.theta_radians = theta_radians;
 output.theta_degress = (theta_radians * 180)/ M_PI;
 
 return output;
 
 }
 
-/*
-FUNCTION HEADER
-*/
+/*******
+FUNCTION: complex_complex_mult
+INPUTS: input1, input2
+OUTPUTS: output
+DESCRIPTION: Takes two inputs of complex_num type, multiplies them, and returns an output of complex_num type.
+*******/
 complex_num complex_complex_mult(complex_num input1,complex_num input2) {
 
 //variables
@@ -51,9 +81,12 @@ return output;
 
 }
 
-/*
-FUNCTION HEADER
-*/
+/*******
+FUNCTION: complex_conj
+INPUTS: input1, input2
+OUTPUTS: output
+DESCRIPTION: Takes an input of complex_num type, and takes the complex conjugate, returns complex_num type
+*******/
 complex_num complex_conj(complex_num input) {
 //variables
 complex_num output = {0,0};
@@ -67,10 +100,12 @@ return output;
 
 }
 
-/*
-FUNCTION HEADER
-*/
-
+/*******
+FUNCTION: complex_div
+INPUTS: input1, input2 (input1/input2)
+OUTPUTS: output
+DESCRIPTION: Takes two inputs of complex_num type, divides them, and returns an output of complex_num type.
+*******/
 complex_num complex_div (complex_num input1,complex_num input2) {
 //variables
 complex_num output = {0,0};
@@ -85,9 +120,12 @@ return output;
 }
 
 
-/*
-FUNCTION HEADER
-*/
+/*******
+FUNCTION: welcome
+INPUTS: n/a
+OUTPUTS: n/a
+DESCRIPTION: Welcome screen for program
+*******/
 void welcome(void) {
 printf("\n\n\t-----------------------------------------------------------\n\n");
 printf("\tWelcome to The Complex Number Calculator\n");
@@ -97,9 +135,12 @@ printf("\n\n\t-----------------------------------------------------------\n\n");
 }
 
 
-/*
-FUNCTION HEADER
-*/
+/*******
+FUNCTION: menu
+INPUTS: n/a
+OUTPUTS: user_input
+DESCRIPTION: menu for program, returns menu choice
+*******/
 int menu(void) {
 //variables
 int user_input = 0;
@@ -112,25 +153,29 @@ printf("2) - (complex complex subtraction)\n");
 printf("3) * (complex complex multiplication)\n");
 printf("4) / (complex complex division)\n");
 printf("5) a* (complex conjugate)\n");
+printf("6) ->polar (Convert to Polar)\n");
 printf("----------------------------------\n");
 
 flag = scanf("%d", &user_input);
-if(!flag || !(user_input > 0 && user_input < 6)) {
+if(!flag || !(user_input > 0 && user_input <= 6)) {
     printf("ERROR. Please select a valid menu option\n");
     flag = 0;
     fflush(stdin);
 }
 
-} while(!flag || !(user_input > 0 && user_input < 6));
+} while(!flag || !(user_input > 0 && user_input <= 6));
 
 //return input
 return user_input;
 
 }
 
-/*
-FUNCTION HEADER
-*/
+/*******
+FUNCTION: operation
+INPUTS: menu_input
+OUTPUTS: n/a
+DESCRIPTION: performs chosen operation and prints results to screen.
+*******/
 void operation(int menu_input) {
     //variables
     complex_num num1 = {0,0};
@@ -145,7 +190,9 @@ void operation(int menu_input) {
         printf("----------------------------------\n");
         break;
         case 2:
-        printf("No development.\n");
+        num1 = usr_input();
+        num2 = usr_input();
+        printf("%lf%+lfj - %lf%+lfj = %lf%+lfj\n\n", num1.r, num1.im, num2.r, num2.im, complex_subtract(num1,num2).r, complex_subtract(num1,num2).im);
         printf("----------------------------------\n");
         break;
         case 3:
@@ -165,9 +212,16 @@ void operation(int menu_input) {
         printf("(%lf%+lfj)* = %lf%+lfj\n\n", num1.r, num1.im, complex_conj(num1).r, complex_conj(num1).im);
         printf("----------------------------------\n");
         break;
+        
+        case 6:
+        num1 = usr_input();
+        printf("(%lf%+lfj) ->plar = Z = %lf, Theta = %lf degrees (%lf radians)\n\n", num1.r, num1.im, complex_to_polar(num1).Z, complex_to_polar(num1).theta_degress,complex_to_polar(num1).theta_radians);
+        printf("----------------------------------\n");
+        break;
 
 
         default:
+        printf("Something happened\n");
         break;
 
     }
@@ -176,6 +230,12 @@ void operation(int menu_input) {
 
 }
 
+/*******
+FUNCTION: usr_input
+INPUTS: n/a
+OUTPUTS: complex_num
+DESCRIPTION: takes user input from stdin for complex numbers
+*******/
 complex_num usr_input(void) {
 //variables
 complex_num usr_input = {0,0};
