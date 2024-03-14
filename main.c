@@ -1,10 +1,10 @@
 /*******************************************************************************************
-NAME       : Tom Stutz, Allyson Telck, Vince Scalici
-CLASS      :  EGR 227 
-INSTRUCTOR : Dr. Brian Krug
-ASSIGNMENT : Final Project
+AUTHOR   : Tom Stutz
+PROGRAM  : Complex_Number_Calculator
 FILE NAME: main.c
-NOTES      : Wack a mole. project must include the following (11) files: main.c, final.c, LCD.c, KEYPAD.c, PWM.c, MOLE.c, final.h, LCD.h, KEYPAD.h, PWM.h, MOLE.h
+NOTES    : terminal script that is developed for numerous 2x1 complex number operations.
+LAST EDIT: THURSDAY MAR 15, 2024, 19:10
+VERSION: 1.0.0
 *******************************************************************************************/
 
 #include "complex.h"

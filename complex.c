@@ -1,8 +1,11 @@
-/*
-Header
-123456
-
-*/
+/*******************************************************************************************
+AUTHOR   : Tom Stutz
+PROGRAM  : Complex_Number_Calculator
+FILE NAME: complex.c
+NOTES    : Library file for functions related to project
+LAST EDIT: THURSDAY MAR 15, 2024, 19:10
+VERSION: 1.0.0
+*******************************************************************************************/
 
 #include "complex.h"
 
